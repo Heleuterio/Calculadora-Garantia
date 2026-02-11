@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+</head>
+<body>
+     <main class="container">
+
+    <h1>Calculadora de Serviços </h1>
+
+    <!-- Valor do produto -->
+    <div class="field">
+      <label for="valorProduto">Valor do Produto</label>
+      <input 
+        type="text" 
+        id="valorProduto" 
+        placeholder="R$"
+        oninput="formatarCampoMoeda(this)"
+      />
+    </div>
+
+    <!-- Garantias (valores manuais) -->
+    <div class="field">
+      <p>Garantia Estendida</p>
+
+      <label for="garantia12Valor">Garantia 12 meses</label>
+      <input 
+        type="text" 
+        id="garantia12Valor" 
+        oninput="formatarCampoMoeda(this)"
+       
+      />
+
+      <label for="garantia24Valor">Garantia 24 meses</label>
+      <input 
+        type="text" 
+        id="garantia24Valor" 
+        oninput="formatarCampoMoeda(this)"
+      />
+
+      <label for="garantia36Valor">Garantia 36 meses</label>
+      <input 
+        type="text" 
+        id="garantia36Valor" 
+        oninput="formatarCampoMoeda(this)"
+      />
+    </div>
+
+    <!-- Parcelas -->
+    <div class="field">
+      <label for="parcelas">Parcelas</label>
+      <select id="parcelas">
+        <option value="6">6x</option>
+        <option value="10" selected>10x</option>
+        <option value="12">12x</option>
+        <option value="18">18x</option>
+        <option value="24">24x</option>
+      </select>
+    </div>
+
+    <!-- Botão -->
+    <button id="btnCalcular">
+      Calcular
+    </button>
+
+    <!-- Resultado -->
+    <section class="resultado" id="resultado">
+
+      <h2>Parcelas</h2>
+
+      <div class="linha">
+        <span>Sem garantia</span>
+        <strong id="semGarantia">-</strong>
+      </div>
+
+      <div class="linha">
+        <span>Garantia 12 meses</span>
+        <strong id="garantia12">-</strong>
+      </div>
+
+      <div class="linha">
+        <span>Garantia 24 meses</span>
+        <strong id="garantia24">-</strong>
+      </div>
+
+      <div class="linha">
+        <span>Garantia 36 meses</span>
+        <strong id="garantia36">-</strong>
+        
+      </div>
+
+    </section>
+
+  </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

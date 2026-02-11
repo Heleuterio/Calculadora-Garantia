@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+/* Container principal */
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Campos */
+.field {
+  margin-bottom: 18px;
+}
+
+.field label,
+.field p {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 6px;
+}
+.field p {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 16px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Resultado */
+.resultado {
+  margin-top: 25px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f8f9fa;
+}
+
+.resultado h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Linhas de comparação */
+.linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.linha span {
+  color: #444;
+}
+
+.linha strong {
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+.linha:last-child {
+  border-bottom: none;
+}
+
+/* Destaque (36 meses ou melhor opção) */
+.linha.destaque {
+  background: #e7f1ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
