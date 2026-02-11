@@ -1,4 +1,3 @@
-// Botão
 const btnCalcular = document.getElementById("btnCalcular");
 
 // Evento de clique
