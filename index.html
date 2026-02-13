@@ -24,6 +24,28 @@
       />
     </div>
 
+    <!-- Campo de desconto -->
+    <div class="campo-desconto">
+  <label for="desconto">Desconto</label>
+
+  <div class="desconto-wrapper">
+    <input
+      type="text"
+      id="desconto"
+      placeholder="0,00"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      
+    >
+
+    <select id="tipoDesconto">
+      <option value="real">R$</option>
+      <option value="percentual">%</option>
+    </select>
+  </div>
+</div>
+
+
     <!-- Garantias (valores manuais) -->
     <div class="field">
       <p>Garantia Estendida</p>
@@ -84,26 +106,18 @@
         <strong id="semGarantia">-</strong>
       </div>
 
-      <div class="linha">
-        <span>Garantia 12 meses</span>
-        <strong id="garantia12">-</strong>
-      </div>
+      <div id="garantia12" class="card-wrapper"></div>
 
-      <div class="linha">
-        <span>Garantia 24 meses</span>
-        <strong id="garantia24">-</strong>
-      </div>
+      <div id="garantia24" class="card-wrapper"></div>
 
-      <div class="linha">
-        <span>Garantia 36 meses</span>
-        <strong id="garantia36">-</strong>
-        
-      </div>
+      <div id="garantia36" class="card-wrapper"></div>
 
     </section>
 
   </main>
-
-    <script src="app.js"></script>
+  
+    <script src="formartar-moedas.js"></script>
+    <script type="module" src="app.js"></script>
+    <script src="desconto.js"></script>
 </body>
 </html>
