@@ -16,6 +16,13 @@ function calcularParcela(valorProduto, valorServico, parcelas) {
   return (valorProduto + valorServico) / parcelas;
 }
 
+const parcelasGarantia = {
+  SemGarantia: 0,
+  parcela12: 0,
+  parcela24: 0,
+  parcela36: 0,
+};
+
 function calcular() {
   const valorProduto = getValorNumerico("valorProduto");
 
@@ -52,12 +59,25 @@ function calcular() {
   }
 
   const parcelaSemGarantia = valorProduto / parcelas;
+  parcelasGarantia.SemGarantia = parcelaSemGarantia;
 
-  const parcela12 = calcularParcela(valorComDesconto, garantia12, parcelas);
+  parcelasGarantia.parcela12 = calcularParcela(
+    valorComDesconto,
+    garantia12,
+    parcelas,
+  );
 
-  const parcela24 = calcularParcela(valorComDesconto, garantia24, parcelas);
+  parcelasGarantia.parcela24 = calcularParcela(
+    valorComDesconto,
+    garantia24,
+    parcelas,
+  );
 
-  const parcela36 = calcularParcela(valorComDesconto, garantia36, parcelas);
+  parcelasGarantia.parcela36 = calcularParcela(
+    valorComDesconto,
+    garantia36,
+    parcelas,
+  );
 
   document.getElementById("semGarantia").innerText =
     `${parcelas}x de ${formatarMoeda(parcelaSemGarantia)}`;
@@ -70,17 +90,19 @@ function calcular() {
   <div class="card-garantia">
     <div class="titulo-garantia">Garantia 12 meses</div>
     <div class="linha-parcela">
-  <div class="parcelamento">
-    <span class="parcelas-texto">${parcelas}x</span>
-    <span class="valor-parcela">${formatarMoeda(parcela12)}</span>
-  </div>
+  
+    <div class="parcelamento">
+      <span class="parcelas-texto">${parcelas}x</span>
+      <span class="valor-parcela">${formatarMoeda(parcelasGarantia.parcela12)}</span>
+    </div>
 
   <span class="anos-destaque">${anos12} anos</span>
-</div>
+    </div>
 
     <div class="data-garantia">
       Garantia válida até: <strong>${dataFinal12}</strong>
     </div>
+
   </div>
 `;
 
@@ -94,7 +116,7 @@ function calcular() {
    <div class="linha-parcela">
   <div class="parcelamento">
     <span class="parcelas-texto">${parcelas}x</span>
-    <span class="valor-parcela">${formatarMoeda(parcela24)}</span>
+    <span class="valor-parcela">${formatarMoeda(parcelasGarantia.parcela24)}</span>
   </div>
 
   <span class="anos-destaque">${anos24} anos</span>
@@ -116,7 +138,7 @@ function calcular() {
     <div class="linha-parcela">
   <div class="parcelamento">
     <span class="parcelas-texto">${parcelas}x</span>
-    <span class="valor-parcela">${formatarMoeda(parcela36)}</span>
+    <span class="valor-parcela">${formatarMoeda(parcelasGarantia.parcela36)}</span>
   </div>
   
   <span class="anos-destaque">${anos36} anos</span>
@@ -126,9 +148,7 @@ function calcular() {
     </div>
   </div>
 `;
-
 }
-
 
 // selecionando o card
 function ativarSelecaoCards() {
@@ -139,14 +159,52 @@ function ativarSelecaoCards() {
 
     if (!card) return;
 
+    const titulo = card.querySelector(".titulo-garantia").innerText;
+
     // Remove seleção de todos
-    document.querySelectorAll(".card-garantia")
-      .forEach(c => c.classList.remove("selecionado"));
+    document
+      .querySelectorAll(".card-garantia")
+      .forEach((c) => c.classList.remove("selecionado"));
 
     // Adiciona no clicado
     card.classList.add("selecionado");
+    // Esconde todas
+    document
+      .querySelectorAll(".diferenca-box")
+      .forEach((box) => box.classList.add("hidden"));
+
+    let diferenca = 0;
+
+    if (titulo.includes("12")) {
+      diferenca = parcelasGarantia.parcela12 - parcelasGarantia.SemGarantia;
+
+      const box = document.getElementById("diferenca12");
+      box.querySelector("span").innerHTML =
+        `<i class="fa-solid fa-circle-plus icone-diferenca"></i>
+        ${formatarMoeda(diferenca)}`;
+      box.classList.remove("hidden");
+    }
+
+    if (titulo.includes("24")) {
+      diferenca = parcelasGarantia.parcela24 - parcelasGarantia.parcela12;
+
+      const box = document.getElementById("diferenca24");
+      box.querySelector("span").innerHTML =
+        `<i class="fa-solid fa-circle-plus icone-diferenca"></i>
+        ${formatarMoeda(diferenca)}`;
+      box.classList.remove("hidden");
+    }
+
+    if (titulo.includes("36")) {
+      diferenca = parcelasGarantia.parcela36 - parcelasGarantia.parcela24;
+
+      const box = document.getElementById("diferenca36");
+      box.querySelector("span").innerHTML =
+      `<i class="fa-solid fa-circle-plus icone-diferenca"></i>
+        ${formatarMoeda(diferenca)}`;
+      box.classList.remove("hidden");
+    }
   });
 }
 
-ativarSelecaoCards()
-
+ativarSelecaoCards();

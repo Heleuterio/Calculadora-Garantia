@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title></title>
-</head>
-<body>
-     <main class="container">
 
-    <h1>Calculadora de Serviços </h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  <meta name="application-name" content="+Serviços">
+  <meta name="apple-mobile-web-app-title" content="+Serviços">
+  <meta name="theme-color" content="#2563eb">
+  <title>Serviços</title>
+</head>
+
+<body>
+  <main class="container">
+
+    <h1 class="logo">
+      <svg width="28" height="28" viewBox="0 0 100 100" class="logo-icon">
+        <rect x="10" y="10" width="80" height="80" rx="20" fill="#2563eb" />
+        <line x1="50" y1="30" x2="50" y2="70" stroke="white" stroke-width="10" stroke-linecap="round" />
+        <line x1="30" y1="50" x2="70" y2="50" stroke="white" stroke-width="10" stroke-linecap="round" />
+      </svg>
+      <span class="logo-text">Serviços</span>
+    </h1>
+
 
     <!-- Valor do produto -->
     <div class="field">
       <label for="valorProduto">Valor do Produto</label>
-      <input 
-        type="text" 
-        id="valorProduto" 
-        placeholder="R$"
-        inputmode="numeric"
-        pattern="[0-9]*"
-        oninput="formatarCampoMoeda(this)"
-      />
+      <input type="text" id="valorProduto" placeholder="R$" inputmode="numeric" pattern="[0-9]*"
+        oninput="formatarCampoMoeda(this)" />
     </div>
 
     <!-- Campo de desconto -->
     <div class="campo-desconto">
-  <label for="desconto">Desconto</label>
+      <label for="desconto">Desconto</label>
 
-  <div class="desconto-wrapper">
-    <input
-      type="text"
-      id="desconto"
-      placeholder="0,00"
-      inputmode="numeric"
-      pattern="[0-9]*"
-      
-    >
+      <div class="desconto-wrapper">
+        <input type="text" id="desconto" placeholder="0,00" inputmode="numeric" pattern="[0-9]*">
 
-    <select id="tipoDesconto">
-      <option value="real">R$</option>
-      <option value="percentual">%</option>
-    </select>
-  </div>
-</div>
+        <select id="tipoDesconto">
+          <option value="real">R$</option>
+          <option value="percentual">%</option>
+        </select>
+      </div>
+    </div>
 
 
     <!-- Garantias (valores manuais) -->
@@ -51,32 +53,13 @@
       <p>Garantia Estendida</p>
 
       <label for="garantia12Valor">Garantia 12 meses</label>
-      <input 
-        type="text" 
-        id="garantia12Valor" 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        oninput="formatarCampoMoeda(this)"
-       
-      />
+      <input type="text" id="garantia12Valor" inputmode="numeric" pattern="[0-9]*" oninput="formatarCampoMoeda(this)" />
 
       <label for="garantia24Valor">Garantia 24 meses</label>
-      <input 
-        type="text" 
-        id="garantia24Valor" 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        oninput="formatarCampoMoeda(this)"
-      />
+      <input type="text" id="garantia24Valor" inputmode="numeric" pattern="[0-9]*" oninput="formatarCampoMoeda(this)" />
 
       <label for="garantia36Valor">Garantia 36 meses</label>
-      <input 
-        type="text" 
-        id="garantia36Valor" 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        oninput="formatarCampoMoeda(this)"
-      />
+      <input type="text" id="garantia36Valor" inputmode="numeric" pattern="[0-9]*" oninput="formatarCampoMoeda(this)" />
     </div>
 
     <!-- Parcelas -->
@@ -106,18 +89,38 @@
         <strong id="semGarantia">-</strong>
       </div>
 
+      <div class="diferenca-wrapper">
+        <div id="diferenca12" class="diferenca-box hidden">
+          <span></span>
+        </div>
+      </div>
+
+
       <div id="garantia12" class="card-wrapper"></div>
 
+      <div class="diferenca-wrapper">
+        <div id="diferenca24" class="diferenca-box hidden">
+          <span></span>
+        </div>
+      </div>
+
       <div id="garantia24" class="card-wrapper"></div>
+
+      <div class="diferenca-wrapper">
+        <div id="diferenca36" class="diferenca-box hidden">
+          <span></span>
+        </div>
+      </div>
 
       <div id="garantia36" class="card-wrapper"></div>
 
     </section>
 
   </main>
-  
-    <script src="formartar-moedas.js"></script>
-    <script type="module" src="app.js"></script>
-    <script src="desconto.js"></script>
+
+  <script src="formartar-moedas.js"></script>
+  <script type="module" src="app.js"></script>
+  <script src="desconto.js"></script>
 </body>
+
 </html>
