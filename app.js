@@ -16,6 +16,18 @@ function calcularParcela(valorProduto, valorServico, parcelas) {
   return (valorProduto + valorServico) / parcelas;
 }
 
+function resetarInterface() {
+  // Esconde todas as diferenças
+  document
+    .querySelectorAll(".diferenca-box")
+    .forEach((box) => box.classList.add("hidden"));
+
+  // Remove seleção dos cards
+  document
+    .querySelectorAll(".card-garantia")
+    .forEach((card) => card.classList.remove("selecionado"));
+}
+
 const parcelasGarantia = {
   SemGarantia: 0,
   parcela12: 0,
@@ -24,6 +36,8 @@ const parcelasGarantia = {
 };
 
 function calcular() {
+  resetarInterface()
+
   const valorProduto = getValorNumerico("valorProduto");
 
   const garantia12 = getValorNumerico("garantia12Valor");
@@ -159,6 +173,7 @@ function ativarSelecaoCards() {
 
     if (!card) return;
 
+    const jaSelecionado = card.classList.contains("selecionado");
     const titulo = card.querySelector(".titulo-garantia").innerText;
 
     // Remove seleção de todos
@@ -166,12 +181,15 @@ function ativarSelecaoCards() {
       .querySelectorAll(".card-garantia")
       .forEach((c) => c.classList.remove("selecionado"));
 
-    // Adiciona no clicado
-    card.classList.add("selecionado");
+    
     // Esconde todas
     document
       .querySelectorAll(".diferenca-box")
       .forEach((box) => box.classList.add("hidden"));
+
+      if (jaSelecionado) return;
+      card.classList.add("selecionado");
+
 
     let diferenca = 0;
 
