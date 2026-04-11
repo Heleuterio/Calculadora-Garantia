@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <meta name="application-name" content="+Serviços">
   <meta name="apple-mobile-web-app-title" content="+Serviços">
   <meta name="theme-color" content="#2563eb">
@@ -26,7 +27,7 @@
     </h1>
     
     <button id="btnModoSeguro" class="btn-modo">
-      🔒 Fique Seguro
+      <i class="fa-solid fa-lock"></i> Fique Seguro
     </button>
     <br> <br>
     <!-- Valor do produto -->
@@ -71,6 +72,7 @@
     <div class="field">
       <label for="parcelas">Parcelas</label>
       <select id="parcelas">
+         <option value="1">À vista</option>
         <option value="6">6x</option>
         <option value="10" selected>10x</option>
         <option value="12">12x</option>
@@ -81,7 +83,11 @@
 
     <!-- Botão -->
     <button id="btnCalcular">
-      Calcular
+      <i class="fa-solid fa-calculator"></i> Calcular
+    </button>
+
+    <button id="btnBeneficios">
+    <i class="fa-solid fa-lightbulb"></i> Ver Benefícios
     </button>
 
     <!-- Resultado -->
@@ -122,7 +128,22 @@
     </section>
 
   </main>
-
+    <div id="modalBeneficios" class="modal hidden">
+      <div class="modal-content">
+        <h2>Benefícios</h2>
+    
+        <div id="listaSetores"></div>
+        <div id="sliderBeneficios" class="hidden"></div>
+        
+        <button id="fecharModal" class="btn-fechar-topo"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <div id="modalImagem" class="modal-imagem hidden">
+        <span id="fecharImagem" class="fechar-imagem"><i class="fa-solid fa-xmark"></i></span>
+        <img id="imagemAmpliada" class="imagem-ampliada" src="" alt="">
+      </div>
+    
+ 
   <script src="formartar-moedas.js"></script>
   <script type="module" src="app.js"></script>
   <script src="desconto.js"></script>

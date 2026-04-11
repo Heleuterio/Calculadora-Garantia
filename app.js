@@ -1,5 +1,11 @@
 let modoSeguroAtivo = false;
 
+export function isModoSeguro() {
+  return modoSeguroAtivo;
+}
+
+import "./features-beneficios.js"
+
 import {
   calcularGarantiaTotal,
   calcularDataFinalGarantia,
@@ -8,13 +14,25 @@ import {
 const btnCalcular = document.getElementById("btnCalcular");
 const btnModoSeguro = document.getElementById("btnModoSeguro");
 
+const icones = {
+  voltar: "fa-arrow-left",
+  cadeado: "fa-lock",
+  beneficios: "fa-lightbulb",
+  seguro: "fa-shield-halved",
+
+  quebra: "fa-mobile-screen",
+  quebraAlerta: "fa-triangle-exclamation",
+
+  roubo: "fa-user-secret",
+  rouboAlt: "fa-mask"
+};
+
 btnModoSeguro.addEventListener("click", () => {
   modoSeguroAtivo = !modoSeguroAtivo;
   limparCampos()
   atualizarModoSeguro();
 });
 
-const valorComDesconto =
   // Evento de clique
   btnCalcular.addEventListener("click", calcular);
 
@@ -48,7 +66,7 @@ function atualizarModoSeguro() {
 
   if (modoSeguroAtivo) {
     texto.innerText = "Sem proteção";
-    btnModoSeguro.innerText = "🔙 Garantia";
+    btnModoSeguro.innerHTML = `<i class="fa-solid fa-arrow-left"></i>  Garantia`;
 
     tituloGarantia.innerText = "Fique Seguro";
     label12.innerText = "Quebra de tela";
@@ -56,7 +74,7 @@ function atualizarModoSeguro() {
     label36.innerText = "Roubo / Furto e Quebra";
   } else {
     texto.innerText = "Sem garantia";
-    btnModoSeguro.innerText = "🔒 Fique Seguro";
+    btnModoSeguro.innerHTML = `<i class="fa-solid fa-lock"></i> Fique Seguro`;
 
     tituloGarantia.innerText = "Garantia Estendida";
     label12.innerText = "Garantia 12 meses";
@@ -99,9 +117,19 @@ function calcular() {
     textoRodape24 = "Proteção imediata • Sem carência";
     textoRodape36 = "Proteção imediata • Sem carência";
 
-    icone12 = "📱💥";
-    icone24 = "🕵️‍♂️";
-    icone36 = "🕵️‍♂️📱";
+    icone12 = `
+  <i class="fa-solid ${icones.quebra}"></i>
+  <i class="fa-solid ${icones.quebraAlerta}"></i>
+    `;
+
+    icone24 = `
+  <i class="fa-solid ${icones.roubo}"></i>
+    `;
+
+    icone36 =  `
+  <i class="fa-solid ${icones.roubo}"></i>
+  <i class="fa-solid ${icones.quebra}"></i>
+    `;
   }
 
   resetarInterface();
@@ -326,5 +354,5 @@ function limparCampos() {
   document.getElementById("garantia24").innerHTML = "";
   document.getElementById("garantia36").innerHTML = "";
 
-  resetarInterface(); // 👈 já aproveita o que você fez
+  resetarInterface(); // 
 }
