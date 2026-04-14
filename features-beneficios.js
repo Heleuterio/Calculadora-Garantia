@@ -6,7 +6,7 @@
       tv: "fa-tv",
       portateis: "fa-blender",
         voltar: "fa-arrow-left",
-        avancar:"fa-solid fa-arrow-right"
+        avancar:"fa-arrow-right"
 
     };
 
@@ -139,9 +139,11 @@
     const modal = document.getElementById("modalBeneficios");
 
     btnBeneficios.addEventListener("click", () => {
-    fecharModal();
+    
+    gtag('event', 'abriu_beneficios');
 
-        modal.classList.remove("hidden");
+    fecharModal();
+    modal.classList.remove("hidden");
 
     if (isModoSeguro()) {
         mostrarSlides("telefonia");
@@ -173,7 +175,13 @@
 
     lista.querySelectorAll("button").forEach(btn => {
         btn.addEventListener("click", () => {
-        mostrarSlides(btn.dataset.setor);
+        
+        gtag("event", "selecionou_setor", {
+            setor: btn.dataset.setor,
+            tela:"beneficios"
+        });
+        
+            mostrarSlides(btn.dataset.setor);
         });
     });
     }

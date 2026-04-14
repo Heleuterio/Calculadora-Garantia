@@ -29,12 +29,20 @@ const icones = {
 
 btnModoSeguro.addEventListener("click", () => {
   modoSeguroAtivo = !modoSeguroAtivo;
+  
+  gtag('event', 'troca_modo', {
+    modo: modoSeguroAtivo ? 'fique_seguro' : 'garantia'
+  });
+
   limparCampos()
   atualizarModoSeguro();
 });
 
   // Evento de clique
-  btnCalcular.addEventListener("click", calcular);
+  btnCalcular.addEventListener("click", () => {
+  gtag('event', 'clicou_calcular');
+  calcular();
+});
 
 function getValorNumerico(id) {
   return converterMoedaParaNumero(document.getElementById(id).value);
